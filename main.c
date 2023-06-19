@@ -7,7 +7,7 @@
 void adicionarProduto(Produto *produtos, int *numProdutos) {
     Produto novoProduto;
 
-    printf("--- Adicionar Produto ---\n");
+    printf("\n--- Adicionar Produto ---\n");
 
     printf("Descrição: ");
     scanf(" %[^\n]s", novoProduto.descricao);
@@ -24,7 +24,7 @@ void adicionarProduto(Produto *produtos, int *numProdutos) {
 	novoProduto.valorLucro = novoProduto.valorVenda - novoProduto.valorCompra;
     novoProduto.percentualLucro = (novoProduto.valorLucro / novoProduto.valorCompra) * 100;
 
-    printf("Fabricante:\n");
+    printf("\n--- Dados do Fabricante ---\n");
     printf("Marca: ");
     scanf(" %[^\n]s", novoProduto.fabricante.marca);
 
@@ -33,9 +33,14 @@ void adicionarProduto(Produto *produtos, int *numProdutos) {
 
     printf("Telefone: ");
     scanf(" %[^\n]s", novoProduto.fabricante.telefone);
+	
+	do{
+	   	printf("UF <AC, AM, AP, SP, TO>: ");
+    	scanf(" %[^\n]s", novoProduto.fabricante.uf);
+    }while (strcmp(novoProduto.fabricante.uf, "AC") != 0 && strcmp(novoProduto.fabricante.uf, "AM") != 0 &&strcmp(novoProduto.fabricante.uf, "AP") != 0 &&
+    strcmp(novoProduto.fabricante.uf, "SP") != 0 && strcmp(novoProduto.fabricante.uf, "TO") != 0);
+    	
 
-    printf("UF: ");
-    scanf(" %[^\n]s", novoProduto.fabricante.uf);
 
     produtos[*numProdutos] = novoProduto;
     (*numProdutos)++;
@@ -105,7 +110,7 @@ void alterarProduto(Produto *produtos, int numProdutos) {
     if (indice != -1) {
         Produto novoProduto;
 
-        printf("=== Alterar Produto ===\n");
+        printf("--- Alterar Produto ---\n");
 
         printf("Nova Descrição: ");
         scanf(" %[^\n]s", novoProduto.descricao);
@@ -142,49 +147,71 @@ void alterarProduto(Produto *produtos, int numProdutos) {
     }
 }
 
+int menuEstatico() {
+	int opcao;
+
+    printf("=== Menu ===\n");
+    printf("1. Adicionar Produto\n");
+    printf("2. Excluir Produto\n");
+    printf("3. Alterar Produto\n");
+    printf("4. Exibir Relatório de Produtos\n");
+    printf("5. Sair\n");
+    printf("Escolha uma opção: ");
+    scanf("%d", &opcao);
+    
+    return opcao;
+}
+
 int main() {
     setlocale(LC_ALL, "Portuguese");
-	int opcao;
+
     Produto produtos[100];
     int numProdutos = 0;
-
+	int opcao; 
+	
     do {
-        printf("=== Menu ===\n");
-        printf("1. Adicionar Produto\n");
-        printf("2. Excluir Produto\n");
-        printf("3. Alterar Produto\n");
-        printf("4. Exibir Relatório de Produtos\n");
-        printf("5. Sair\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+		if (numProdutos == 0) {
+			printf("=== Menu ===\n");
+	        printf("1. Adicionar Produto\n");
+	        printf("2. Sair\n");
+	        printf("Escolha uma opção: ");
+	        scanf("%d", &opcao);
 
-        switch (opcao) {
-            case 1:
+            if (opcao == 1) {
                 adicionarProduto(produtos, &numProdutos);
-                break;
-            case 2:
-                excluirProduto(produtos, &numProdutos);
-                break;
-            case 3:
-                alterarProduto(produtos, numProdutos);
-                break;
-            case 4:
-                exibirRelatorio(produtos, numProdutos);
-                break;
-            case 5:
-                printf("Encerrando o programa. Até mais!\n");
-                break;
-            default:
-                printf("Opção inválida. Tente novamente.\n");
-                break;
-        }
+            } else if (opcao > 2) {
+              printf("Opção inválida! Tente novamente!\n");
+            } else if (opcao == 2){
+            	return;
+			}
+        } else {
+			opcao = menuEstatico();
+	
+	        switch (opcao) {
+	            case 1:
+	                adicionarProduto(produtos, &numProdutos);
+	                break;
+	            case 2:
+	            	excluirProduto(produtos, &numProdutos);
+	                break;
+	            case 3:
+	                alterarProduto(produtos, numProdutos);
+	                break;
+	            case 4:
+	                exibirRelatorio(produtos, numProdutos);
+	                break;
+	            case 5:
+	                printf("Programa encerrado! \n");
+	                break;
+	            default:
+	                printf("Opção inválida! Tente novamente!\n");
+	                break;
+	        }
+		}
     } while (opcao != 5);
 
     return 0;
 }
-
-
-
 
 
 
