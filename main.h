@@ -18,7 +18,6 @@ typedef struct  {
 }Produto;
 
 void adicionarProduto(Produto *produtos, int *numProdutos);
-void exibirRelatorio(Produto *produtos, int numProdutos);
 void alterarProduto(Produto *produtos, int numProdutos);
 void excluirProduto(Produto *produtos, int *numProdutos);
 int encontrarProduto(Produto *produtos, int numProdutos, const char *descricao);

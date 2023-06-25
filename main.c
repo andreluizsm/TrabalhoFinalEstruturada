@@ -3,6 +3,8 @@
 #include <locale.h>
 #include <string.h>
 #include "main.h"
+#include "menu.h"
+
 
 void adicionarProduto(Produto *produtos, int *numProdutos) {
     Produto novoProduto;
@@ -12,7 +14,7 @@ void adicionarProduto(Produto *produtos, int *numProdutos) {
     printf("Descrição: ");
     scanf(" %[^\n]s", novoProduto.descricao);
 
-    printf("Peso: ");
+    printf("Peso (g): ");
     scanf("%f", &novoProduto.peso);
 
     printf("Valor de Compra: ");
@@ -46,27 +48,6 @@ void adicionarProduto(Produto *produtos, int *numProdutos) {
     (*numProdutos)++;
 
     printf("Produto adicionado com sucesso!\n\n");
-}
-
-
-void exibirRelatorio(Produto *produtos, int numProdutos) {
-    printf("\n--- Relatório de Produtos ---\n");
-	
-	int i;
-    for (i = 0; i < numProdutos; i++) {
-        printf("Produto %d\n", i + 1);
-        printf("Descrição: %s\n", produtos[i].descricao);
-        printf("Peso: %.2f\n", produtos[i].peso);
-        printf("Valor de Compra: R$ %.2f\n", produtos[i].valorCompra);
-        printf("Valor de Venda: R$ %.2f\n", produtos[i].valorVenda);
-		printf("Percentual de Lucro: %.2f%%\n", produtos[i].percentualLucro);
-        printf("Fabricante:\n");
-        printf("Marca: %s\n", produtos[i].fabricante.marca);
-        printf("Site: %s\n", produtos[i].fabricante.site);
-        printf("Telefone: %s\n", produtos[i].fabricante.telefone);
-        printf("UF: %s\n", produtos[i].fabricante.uf);
-        printf("\n");
-    }
 }
 
 // Função para encontrar o índice de um produto pelo nome
@@ -115,7 +96,7 @@ void alterarProduto(Produto *produtos, int numProdutos) {
         printf("Nova Descrição: ");
         scanf(" %[^\n]s", novoProduto.descricao);
 
-        printf("Novo Peso: ");
+        printf("Novo Peso (g): ");
         scanf("%f", &novoProduto.peso);
 
         printf("Novo Valor de Compra: ");
@@ -154,8 +135,8 @@ int menuEstatico() {
     printf("1. Adicionar Produto\n");
     printf("2. Excluir Produto\n");
     printf("3. Alterar Produto\n");
-    printf("4. Exibir Relatório de Produtos\n");
-    printf("5. Sair\n");
+    printf("4. Exibir Menu Final\n");
+	printf("6. Sair\n");
     printf("Escolha uma opção: ");
     scanf("%d", &opcao);
     
@@ -188,36 +169,30 @@ int main() {
 			opcao = menuEstatico();
 	
 	        switch (opcao) {
-	            case 1:
-	                adicionarProduto(produtos, &numProdutos);
-	                break;
-	            case 2:
-	            	excluirProduto(produtos, &numProdutos);
-	                break;
-	            case 3:
-	                alterarProduto(produtos, numProdutos);
-	                break;
-	            case 4:
-	                exibirRelatorio(produtos, numProdutos);
-	                break;
-	            case 5:
-	                printf("Programa encerrado! \n");
-	                break;
-	            default:
-	                printf("Opção inválida! Tente novamente!\n");
-	                break;
-	        }
+                case 1:
+                    adicionarProduto(produtos, &numProdutos);
+                    break;
+                case 2:
+                    excluirProduto(produtos, &numProdutos);
+                    break;
+                case 3:
+                    alterarProduto(produtos, numProdutos);
+                    break;
+                case 4:
+                    menuFinal(produtos, numProdutos);
+                    break;
+				case 5:
+                    printf("Encerrando o programa. Até mais!\n");
+                    return 0;
+                default:
+                    printf("Opção inválida. Tente novamente.\n");
+                    break;
+            }
 		}
-    } while (opcao != 5);
+    } while (1);
 
     return 0;
 }
-
-
-
-
-
-
 
 
 

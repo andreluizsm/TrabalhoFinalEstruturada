@@ -1,0 +1,10 @@
+int menuFinal(Produto *produtos, int numProdutos);
+void listarMarcas(Produto *produtos, int numProdutos);
+void listarProdutosEstado(Produto *produtos, int numProdutos, const char *uf);
+void exibirEstadoProdutoMaisCaro(Produto *produtos, int numProdutos);
+void listarFabricanteProdutoMaisBarato(Produto *produtos, int numProdutos);
+int compararProdutosValor(const void *produto1, const void *produto2);
+void listarProdutosOrdemCrescenteValor(Produto *produtos, int numProdutos);
+int compararProdutosLucro(const void *produto1, const void *produto2);
+void listarProdutosOrdemCrescenteLucro(Produto *produtos, int numProdutos);
+void listarProdutosPorMarca(Produto *produtos, int numProdutos, const char *marca);
