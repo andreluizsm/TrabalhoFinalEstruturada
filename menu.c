@@ -207,13 +207,6 @@ void listarProdutosPorMarca(Produto *produtos, int numProdutos, const char *marc
     }
 }
 
-void voltarMenuPrincipal() {
-    printf("\nPressione qualquer tecla para voltar ao menu principal.\n");
-    getchar(); // Limpa o buffer do teclado
-    getchar(); // Aguarda a entrada do usuário
-}
-
-
 int menuFinal(Produto *produtos, int numProdutos) {
     int opcao;
 
