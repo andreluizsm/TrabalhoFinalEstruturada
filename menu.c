@@ -8,11 +8,10 @@
 void listarMarcas(Produto *produtos, int numProdutos) {
     printf("\n--- Lista de Marcas ---\n");
 
-    // Utilizaremos um vetor auxiliar para armazenar as marcas únicas
-    char marcas[100][50]; // Supomos que haverá no máximo 100 marcas, com até 50 caracteres cada
-    int numMarcas = 0; // Variável para contar o número de marcas diferentes encontradas
+    
+    char marcas[100][50]; 
+    int numMarcas = 0; 
 
-    // Percorre os produtos e adiciona as marcas ao vetor auxiliar, evitando duplicações
     int i;
     for (i = 0; i < numProdutos; i++) {
         bool marcaRepetida = false;
@@ -29,17 +28,14 @@ void listarMarcas(Produto *produtos, int numProdutos) {
         }
     }
 
-    // Mostra marcas encontradas
     for (i = 0; i < numMarcas; i++) {
         printf("%d. %s\n", i + 1, marcas[i]);
     }
 }
 
-// Função para listar todos os produtos de um determinado estado (UF)
 void listarProdutosEstado(Produto *produtos, int numProdutos, const char *uf) {
     printf("\n--- Produtos do Estado %s ---\n", uf);
 
-    // Percorremos os produtos e exibimos os que possuem a UF desejada
     int i;
     for (i = 0; i < numProdutos; i++) {
         if (strcmp(produtos[i].fabricante.uf, uf) == 0) {
@@ -59,14 +55,12 @@ void listarProdutosEstado(Produto *produtos, int numProdutos, const char *uf) {
     }
 }
 
-// Função para exibir o estado que possui o produto mais caro
 void exibirEstadoProdutoMaisCaro(Produto *produtos, int numProdutos) {
     printf("\n--- Estado com o Produto Mais Caro ---\n");
 
     float maiorValor = 0;
     char estadoMaisCaro[3] = "";
 
-    // Percorremos os produtos e atualizamos o maior valor e o estado correspondente
     int i;
     for (i = 0; i < numProdutos; i++) {
         if (produtos[i].valorVenda > maiorValor) {
@@ -103,7 +97,6 @@ void listarFabricanteProdutoMaisBarato(Produto *produtos, int numProdutos) {
     printf("Fabricante do produto mais barato: %s\n", fabricanteMaisBarato.marca);
 }
 
-// Função para comparar dois produtos pelo valor de venda
 int compararProdutosValor(const void *produto1, const void *produto2) {
     Produto *p1 = (Produto *)produto1;
     Produto *p2 = (Produto *)produto2;
@@ -117,14 +110,11 @@ int compararProdutosValor(const void *produto1, const void *produto2) {
     }
 }
 
-// Função para listar todos os produtos em ordem crescente de valor de venda
 void listarProdutosOrdemCrescenteValor(Produto *produtos, int numProdutos) {
     printf("\n--- Produtos em Ordem Crescente de Valor de Venda ---\n");
 
-    // Utilizamos a função qsort para ordenar os produtos pelo valor de venda
     qsort(produtos, numProdutos, sizeof(Produto), compararProdutosValor);
 
-    // Exibimos os produtos em ordem crescente de valor de venda
     int i;
     for (i = 0; i < numProdutos; i++) {
         printf("Produto %d\n", i + 1);
@@ -155,14 +145,11 @@ int compararProdutosLucro(const void *produto1, const void *produto2) {
     }
 }
 
-// Função para listar todos os produtos em ordem crescente de maior valor de lucro
 void listarProdutosOrdemCrescenteLucro(Produto *produtos, int numProdutos) {
     printf("\n--- Produtos em Ordem Crescente de Maior Valor de Lucro ---\n");
 
-    // Utilizamos a função qsort para ordenar os produtos pelo valor de lucro
     qsort(produtos, numProdutos, sizeof(Produto), compararProdutosLucro);
 
-    // Exibimos os produtos em ordem crescente de maior valor de lucro
     int i;
     for (i = 0; i < numProdutos; i++) {
         printf("Produto %d\n", i + 1);

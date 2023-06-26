@@ -1,4 +1,3 @@
-// Definição da estrutura do fabricante
 typedef struct {
     char marca[100];
     char site[100];
@@ -6,7 +5,6 @@ typedef struct {
     char uf[3];
 } Fabricante;
 
-// Definição da estrutura do produto
 typedef struct  {
     char descricao[100];
     float peso;
