@@ -251,5 +251,5 @@ int menuFinal(Produto *produtos, int numProdutos) {
                 printf("Opção inválida. Tente novamente.\n");
                 break;
         }
-    } while (opcao != 8);
+    } while (opcao != 9);
 }

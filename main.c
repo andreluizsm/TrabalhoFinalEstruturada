@@ -150,7 +150,7 @@ int menuEstatico() {
     printf("2. Excluir Produto\n");
     printf("3. Alterar Produto\n");
     printf("4. Exibir Menu Final\n");
-	printf("6. Sair\n");
+	printf("5. Sair\n");
     printf("Escolha uma opção: ");
     scanf("%d", &opcao);
     
