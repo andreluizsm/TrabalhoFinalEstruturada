@@ -81,7 +81,7 @@ void excluirProduto(Produto *produtos, int *numProdutos) {
 }
 
 void exibirRelatorio(Produto *produtos, int numProdutos) {
-    printf("=== Relatório de Produtos ===\n");
+    printf("\n--- Relatório de Produtos ---\n");
 	
 	int i;
     for ( i = 0; i < numProdutos; i++) {
@@ -145,7 +145,7 @@ void alterarProduto(Produto *produtos, int numProdutos) {
 int menuEstatico() {
 	int opcao;
 
-    printf("=== Menu ===\n");
+    printf("--- Menu ---\n");
     printf("1. Adicionar Produto\n");
     printf("2. Excluir Produto\n");
     printf("3. Alterar Produto\n");
@@ -166,7 +166,7 @@ int main() {
 	
     do {
 		if (numProdutos == 0) {
-			printf("=== Menu ===\n");
+			printf("--- Menu ---\n");
 	        printf("1. Adicionar Produto\n");
 	        printf("2. Sair\n");
 	        printf("Escolha uma opção: ");
@@ -196,7 +196,7 @@ int main() {
                     menuFinal(produtos, numProdutos);
                     break;
 				case 5:
-                    printf("Encerrando o programa. Até mais!\n");
+                    printf("Programa encerrado.\n");
                     return 0;
                 default:
                     printf("Opção inválida. Tente novamente.\n");

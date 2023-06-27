@@ -198,7 +198,7 @@ int menuFinal(Produto *produtos, int numProdutos) {
     int opcao;
 
     do {
-        printf("\n=== Menu Final ===\n");
+        printf("\n--- Menu Final ---\n");
         printf("1. Listar todas as marcas\n");
         printf("2. Listar todos os produtos\n");
         printf("3. Listar produtos de um determinado estado (UF)\n");
